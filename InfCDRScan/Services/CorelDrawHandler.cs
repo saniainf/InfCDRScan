@@ -473,22 +473,34 @@ namespace InfCDRScan.Services
 
         private void ProcessingOnBlendGroupShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectBlend,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnExtrudeGroupShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnOLEObjectShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnContourGroupShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectContour,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
             ProcessingColor(shape.Effect.Contour.FillColor, shapeID, InfIconType.def);
             ProcessingColor(shape.Effect.Contour.FillColorTo, shapeID, InfIconType.def);
             ProcessingColor(shape.Effect.Contour.OutlineColor, shapeID, InfIconType.def);
@@ -675,7 +687,12 @@ namespace InfCDRScan.Services
         #endregion
 
         #region обработка цвета
-
+        /// <summary>
+        /// Обработка цвета
+        /// </summary>
+        /// <param name="color">цвет</param>
+        /// <param name="shapeID"></param>
+        /// <param name="firstIcon">иконка типа объекта</param>
         private void ProcessingColor(corel.Color color, int shapeID, InfIconType firstIcon)
         {
             switch (color.Type)

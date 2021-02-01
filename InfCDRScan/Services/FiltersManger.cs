@@ -135,13 +135,17 @@ namespace InfCDRScan.Services
         [Description("Enhanced Outline"), Icon(InfIconType.def)]
         OutlineEnhanced,
 
-        //разные шейпы 
+        //эфекты шейпов
         [Description("Contour"), Icon(InfIconType.def)]
         EffectContour,
         [Description("Bevel"), Icon(InfIconType.def)]
         EffectBevel,
+        [Description("Blend"), Icon(InfIconType.def)]
+        EffectBlend,
         [Description("DropShadow"), Icon(InfIconType.def)]
         EffectDropShadow,
+
+        //разные шейпы
         [Description("ArtisticMedia"), Icon(InfIconType.def)]
         EffectArtisticMedia,
         [Description("3D Object"), Icon(InfIconType.def)]
