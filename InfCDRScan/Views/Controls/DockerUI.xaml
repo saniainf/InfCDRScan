@@ -9,15 +9,15 @@
              mc:Ignorable="d" 
              MinWidth="225" 
              Loaded="UserControl_Loaded">
-    <!--<UserControl.Resources>
+    <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Colors.xaml"/>
-                <ResourceDictionary Source="Styles/Styles.xaml"/>
-                <ResourceDictionary Source="Resources/Images.xaml"/>
+                <ResourceDictionary Source="../../Styles/Colors.xaml"/>
+                <ResourceDictionary Source="../../Styles/Styles.xaml"/>
+                <ResourceDictionary Source="../../Resources/Images.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </UserControl.Resources>-->
+    </UserControl.Resources>
 
     <Grid Margin="1">
         <Grid.RowDefinitions>
