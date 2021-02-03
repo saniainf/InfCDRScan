@@ -32,88 +32,124 @@ namespace InfCDRScan.Services
                 if (shape.PowerClip != null)
                     ProcessingOnPowerClipShape(shape);
 
-                switch (shape.Type)
+                ParseOnShapeType(shape);
+                ParseOnShapeEffect(shape);
+            }
+        }
+
+        private void ParseOnShapeType(corel.Shape shape)
+        {
+            switch (shape.Type)
+            {
+                case corel.cdrShapeType.cdrNoShape:
+                    ProcessingOnNoShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrRectangleShape:
+                    ProcessingOnRectangleShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrEllipseShape:
+                    ProcessingOnEllipseShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrCurveShape:
+                    ProcessingOnCurveShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrPolygonShape:
+                    ProcessingOnPolygonShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrBitmapShape:
+                    ProcessingOnBitmapShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrTextShape:
+                    ProcessingOnTextShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrSelectionShape:
+                    ProcessingOnSelectionShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrGuidelineShape:
+                    ProcessingOnGuidelineShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrOLEObjectShape:
+                    ProcessingOnOLEObjectShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrLinearDimensionShape:
+                    ProcessingOnLinearDimensionShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrBevelGroupShape:
+                    ProcessingOnEffectBevel(shape);
+                    break;
+                case corel.cdrShapeType.cdr3DObjectShape:
+                    ProcessingOn3DObjectShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrArtisticMediaGroupShape:
+                    ProcessingOnArtisticMediaGroupShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrConnectorShape:
+                    ProcessingOnConnectorShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrMeshFillShape:
+                    ProcessingOnMeshFillShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrCustomShape:
+                    ProcessingOnCustomShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrSymbolShape:
+                    ProcessingOnSymbolShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrHTMLFormObjectShape:
+                    ProcessingOnHTMLFormObjectShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrHTMLActiveObjectShape:
+                    ProcessingOnHTMLActiveObjectShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrPerfectShape:
+                    ProcessingOnPerfectShape(shape);
+                    break;
+                case corel.cdrShapeType.cdrEPSShape:
+                    ProcessingOnEPSShape(shape);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ParseOnShapeEffect(corel.Shape shape)
+        {
+            foreach (corel.Effect effect in shape.Effects)
+            {
+                switch (effect.Type)
                 {
-                    case corel.cdrShapeType.cdrNoShape:
-                        ProcessingOnNoShape(shape);
+                    case cdrEffectType.cdrBlend:
+                        ProcessingOnEffectBlend(shape);
                         break;
-                    case corel.cdrShapeType.cdrRectangleShape:
-                        ProcessingOnRectangleShape(shape);
+                    case cdrEffectType.cdrExtrude:
+                        ProcessingOnEffectExtrude(shape);
                         break;
-                    case corel.cdrShapeType.cdrEllipseShape:
-                        ProcessingOnEllipseShape(shape);
+                    case cdrEffectType.cdrEnvelope:
+                        ProcessingOnEffectEnvelope(shape);
                         break;
-                    case corel.cdrShapeType.cdrCurveShape:
-                        ProcessingOnCurveShape(shape);
+                    case cdrEffectType.cdrTextOnPath:
+                        ProcessingOnEffectTextOnPath(shape);
                         break;
-                    case corel.cdrShapeType.cdrPolygonShape:
-                        ProcessingOnPolygonShape(shape);
+                    case cdrEffectType.cdrControlPath:
+                        ProcessingOnEffectControlPath(shape);
                         break;
-                    case corel.cdrShapeType.cdrBitmapShape:
-                        ProcessingOnBitmapShape(shape);
+                    case cdrEffectType.cdrDropShadow:
+                        ProcessingOnEffectDropShadow(shape);
                         break;
-                    case corel.cdrShapeType.cdrTextShape:
-                        ProcessingOnTextShape(shape);
+                    case cdrEffectType.cdrContour:
+                        ProcessingOnEffectContour(shape);
                         break;
-                    case corel.cdrShapeType.cdrSelectionShape:
-                        ProcessingOnSelectionShape(shape);
+                    case cdrEffectType.cdrDistortion:
+                        ProcessingOnEffectDistortion(shape);
                         break;
-                    case corel.cdrShapeType.cdrGuidelineShape:
-                        ProcessingOnGuidelineShape(shape);
+                    case cdrEffectType.cdrPerspective:
+                        ProcessingOnEffectPerspective(shape);
                         break;
-                    case corel.cdrShapeType.cdrBlendGroupShape:
-                        ProcessingOnBlendGroupShape(shape);
+                    case cdrEffectType.cdrLens:
+                        ProcessingOnEffectLens(shape);
                         break;
-                    case corel.cdrShapeType.cdrExtrudeGroupShape:
-                        ProcessingOnExtrudeGroupShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrOLEObjectShape:
-                        ProcessingOnOLEObjectShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrContourGroupShape:
-                        ProcessingOnContourGroupShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrLinearDimensionShape:
-                        ProcessingOnLinearDimensionShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrBevelGroupShape:
-                        ProcessingOnBevelGroupShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrDropShadowGroupShape:
-                        ProcessingOnDropShadowGroupShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdr3DObjectShape:
-                        ProcessingOn3DObjectShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrArtisticMediaGroupShape:
-                        ProcessingOnArtisticMediaGroupShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrConnectorShape:
-                        ProcessingOnConnectorShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrMeshFillShape:
-                        ProcessingOnMeshFillShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrCustomShape:
-                        ProcessingOnCustomShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrCustomEffectGroupShape:
-                        ProcessingOnCustomEffectGroupShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrSymbolShape:
-                        ProcessingOnSymbolShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrHTMLFormObjectShape:
-                        ProcessingOnHTMLFormObjectShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrHTMLActiveObjectShape:
-                        ProcessingOnHTMLActiveObjectShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrPerfectShape:
-                        ProcessingOnPerfectShape(shape);
-                        break;
-                    case corel.cdrShapeType.cdrEPSShape:
-                        ProcessingOnEPSShape(shape);
+                    case cdrEffectType.cdrCustomEffect:
+                        ProcessingOnEffectCustom(shape);
                         break;
                     default:
                         break;
@@ -123,7 +159,7 @@ namespace InfCDRScan.Services
 
         #endregion
 
-        #region методы обработки shape типа
+        #region обработка shape типа
 
         private void ProcessingOnGroupShape(corel.Shape shape) =>
             Scan(shape.Shapes.All(), pageID);
@@ -471,39 +507,9 @@ namespace InfCDRScan.Services
             });
         }
 
-        private void ProcessingOnBlendGroupShape(corel.Shape shape)
-        {
-            int shapeID = shape.StaticID;
-            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
-            {
-                FiltersType = InfFilters.EffectBlend,
-                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
-                Icon = InfIconType.def
-            });
-        }
-
-        private void ProcessingOnExtrudeGroupShape(corel.Shape shape)
-        {
-            
-        }
-
         private void ProcessingOnOLEObjectShape(corel.Shape shape)
         {
-            
-        }
 
-        private void ProcessingOnContourGroupShape(corel.Shape shape)
-        {
-            int shapeID = shape.StaticID;
-            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
-            {
-                FiltersType = InfFilters.EffectContour,
-                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
-                Icon = InfIconType.def
-            });
-            ProcessingColor(shape.Effect.Contour.FillColor, shapeID, InfIconType.def);
-            ProcessingColor(shape.Effect.Contour.FillColorTo, shapeID, InfIconType.def);
-            ProcessingColor(shape.Effect.Contour.OutlineColor, shapeID, InfIconType.def);
         }
 
         private void ProcessingOnLinearDimensionShape(corel.Shape shape)
@@ -517,69 +523,193 @@ namespace InfCDRScan.Services
             });
         }
 
-        private void ProcessingOnBevelGroupShape(corel.Shape shape)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ProcessingOnDropShadowGroupShape(corel.Shape shape)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ProcessingOn3DObjectShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnArtisticMediaGroupShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnConnectorShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnMeshFillShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnCustomShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
-        }
-
-        private void ProcessingOnCustomEffectGroupShape(corel.Shape shape)
-        {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnSymbolShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnHTMLFormObjectShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnHTMLActiveObjectShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnPerfectShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ProcessingOnEPSShape(corel.Shape shape)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        #endregion
+
+        #region обработка эффектов шейпа
+
+        private void ProcessingOnEffectBlend(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectBlend,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectExtrude(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectExtrude,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectEnvelope(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectEnvelope,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectTextOnPath(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectTextOnPath,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectControlPath(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectControlPath,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectDropShadow(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectDropShadow,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectContour(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectContour,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+            ProcessingColor(shape.Effect.Contour.FillColor, shapeID, InfIconType.def);
+            ProcessingColor(shape.Effect.Contour.FillColorTo, shapeID, InfIconType.def);
+            ProcessingColor(shape.Effect.Contour.OutlineColor, shapeID, InfIconType.def);
+        }
+
+        private void ProcessingOnEffectDistortion(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectDistortion,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectPerspective(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectPerspective,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectLens(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectLens,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectCustom(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectCustom,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
+        }
+
+        private void ProcessingOnEffectBevel(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectBevel,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         #endregion
@@ -596,7 +726,7 @@ namespace InfCDRScan.Services
                     filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
                     {
                         FiltersType = InfFilters.FillUniform,
-                        Description = string.Format("{0} | Page: {1}",GetShapeTypeName(shapeType), pageID),
+                        Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shapeType), pageID),
                         Icon = InfIconType.def
                     });
                     ProcessingColor(fill.UniformColor, shapeID, InfIconType.def);

@@ -136,14 +136,30 @@ namespace InfCDRScan.Services
         OutlineEnhanced,
 
         //эфекты шейпов
-        [Description("Contour"), Icon(InfIconType.def)]
-        EffectContour,
-        [Description("Bevel"), Icon(InfIconType.def)]
-        EffectBevel,
         [Description("Blend"), Icon(InfIconType.def)]
         EffectBlend,
+        [Description("Extrude"), Icon(InfIconType.def)]
+        EffectExtrude,
+        [Description("Envelope"), Icon(InfIconType.def)]
+        EffectEnvelope,
+        [Description("TextOnPathEffect"), Icon(InfIconType.def)]
+        EffectTextOnPath,
+        [Description("ControlPathEffect"), Icon(InfIconType.def)]
+        EffectControlPath,
         [Description("DropShadow"), Icon(InfIconType.def)]
         EffectDropShadow,
+        [Description("Contour"), Icon(InfIconType.def)]
+        EffectContour,
+        [Description("Distortion"), Icon(InfIconType.def)]
+        EffectDistortion,
+        [Description("Perspective"), Icon(InfIconType.def)]
+        EffectPerspective,
+        [Description("Lens"), Icon(InfIconType.def)]
+        EffectLens,
+        [Description("Custom Effect"), Icon(InfIconType.def)]
+        EffectCustom,
+        [Description("Bevel"), Icon(InfIconType.def)]
+        EffectBevel,
 
         //разные шейпы
         [Description("ArtisticMedia"), Icon(InfIconType.def)]
@@ -158,8 +174,6 @@ namespace InfCDRScan.Services
         ObjectEPS,
         [Description("Custom Shape"), Icon(InfIconType.def)]
         CustomShape,
-        [Description("Custom Effect"), Icon(InfIconType.def)]
-        CustomEffect,
         [Description("Perfect Shape"), Icon(InfIconType.def)]
         ShapePerfect,
 
