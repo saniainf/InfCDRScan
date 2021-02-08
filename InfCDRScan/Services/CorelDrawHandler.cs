@@ -498,10 +498,11 @@ namespace InfCDRScan.Services
 
         private void ProcessingOnGuidelineShape(corel.Shape shape)
         {
+            //todo исправить добавление с каждой страницы отдельно
             int shapeID = shape.StaticID;
             filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
             {
-                FiltersType = InfFilters.Guidelines,
+                FiltersType = InfFilters.ObjectGuidelines,
                 Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
                 Icon = InfIconType.def
             });
@@ -509,7 +510,13 @@ namespace InfCDRScan.Services
 
         private void ProcessingOnOLEObjectShape(corel.Shape shape)
         {
-
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapeOLE,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnLinearDimensionShape(corel.Shape shape)
@@ -517,7 +524,7 @@ namespace InfCDRScan.Services
             int shapeID = shape.StaticID;
             filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
             {
-                FiltersType = InfFilters.LinearDimension,
+                FiltersType = InfFilters.ObjectLinearDimension,
                 Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
                 Icon = InfIconType.def
             });
@@ -525,52 +532,112 @@ namespace InfCDRScan.Services
 
         private void ProcessingOn3DObjectShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.Effect3DObject,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnArtisticMediaGroupShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.EffectArtisticMedia,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnConnectorShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapeConnector,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnMeshFillShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapeConnector,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnCustomShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapeCustom,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnSymbolShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapeSymbol,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnHTMLFormObjectShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ObjectHTMLForm,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnHTMLActiveObjectShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ObjectHTMLForm,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnPerfectShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapePerfect,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         private void ProcessingOnEPSShape(corel.Shape shape)
         {
-            
+            int shapeID = shape.StaticID;
+            filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+            {
+                FiltersType = InfFilters.ShapeEPS,
+                Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
+                Icon = InfIconType.def
+            });
         }
 
         #endregion

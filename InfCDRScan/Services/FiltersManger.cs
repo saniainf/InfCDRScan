@@ -128,6 +128,8 @@ namespace InfCDRScan.Services
         FillPattern,
         [Description("Hatch Fill"), Icon(InfIconType.def)]
         FillHatch,
+        [Description("Mesh Fill"), Icon(InfIconType.def)]
+        FillMesh,
 
         //обводки
         [Description("Outline"), Icon(InfIconType.def)]
@@ -166,22 +168,26 @@ namespace InfCDRScan.Services
         EffectArtisticMedia,
         [Description("3D Object"), Icon(InfIconType.def)]
         Effect3DObject,
-        [Description("Symbol"), Icon(InfIconType.def)]
-        ObjectSymbol,
         [Description("HTML Form"), Icon(InfIconType.def)]
         ObjectHTMLForm,
         [Description("EPS"), Icon(InfIconType.def)]
-        ObjectEPS,
+        ShapeEPS,
         [Description("Custom Shape"), Icon(InfIconType.def)]
-        CustomShape,
+        ShapeCustom,
         [Description("Perfect Shape"), Icon(InfIconType.def)]
         ShapePerfect,
+        [Description("OLE Shape"), Icon(InfIconType.def)]
+        ShapeOLE,
+        [Description("Connector Shape"), Icon(InfIconType.def)]
+        ShapeConnector,
+        [Description("Symbol Shape"), Icon(InfIconType.def)]
+        ShapeSymbol,
 
         //вспомогательные шейпы
         [Description("Guidelines"), Icon(InfIconType.def)]
-        Guidelines,
+        ObjectGuidelines,
         [Description("Linear Dimension"), Icon(InfIconType.def)]
-        LinearDimension,
+        ObjectLinearDimension,
     }
 
     internal class FiltersManger
