@@ -8,63 +8,73 @@ using corel = Corel.Interop.VGCore;
 
 namespace InfCDRScan.Services
 {
+    internal enum InfFilterGroup
+    {
+        Common,
+        Shape,
+        Text,
+        Bitmap,
+        PowerClip,
+        Color
+    }
+
     internal enum InfFilters
     {
         [Description("Noname"), Icon(InfIconType.def)]
         Noname,
 
         //простые векторные формы
-        [Description("Curve Shape"), Icon(InfIconType.def)]
+        [Description("Curve Shape"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
         ShapeCurve,
-        [Description("Rectangle"), Icon(InfIconType.def)]
+        [Description("Rectangle"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
         ShapeRectangle,
-        [Description("Ellipse"), Icon(InfIconType.def)]
+        [Description("Ellipse"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
         ShapeEllipse,
-        [Description("Polygon"), Icon(InfIconType.def)]
+        [Description("Polygon"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
         ShapePolygon,
-        [Description("Shape Nodes > 3000"), Icon(InfIconType.def)]
+        [Description("Shape Nodes > 3000"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
         ShapeNodesGreat,
 
         //текст
-        [Description("Text"), Icon(InfIconType.def)]
+        [Description("Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
         TextCommon,
-        [Description("Overflow Text"), Icon(InfIconType.def)]
+        [Description("Overflow Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
         TextOverflow,
-        [Description("Different Text Fill"), Icon(InfIconType.def)]
+        [Description("Different Text Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
         TextDifferentFill,
 
         //bitmaps
-        [Description("Bitmap"), Icon(InfIconType.def)]
+        [Description("Bitmap"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCommon,
-        [Description("Bitmap Res. > 320dpi"), Icon(InfIconType.def)]
+        [Description("Bitmap Res. > 320dpi"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapDPIGreat,
-        [Description("Bitmap Unproportional"), Icon(InfIconType.def)]
+        [Description("Bitmap Unproportional"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapUnproportional,
-        [Description("Bitmap Crop On"), Icon(InfIconType.def)]
+        [Description("Bitmap Crop On"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCropOn,
-        [Description("Bitmap Transparent"), Icon(InfIconType.def)]
+        [Description("Bitmap Transparent"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapTransparent,
-        [Description("Bitmap Black&White"), Icon(InfIconType.def)]
+        [Description("Bitmap Black&White"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapBW,
-        [Description("Bitmap 16 color"), Icon(InfIconType.def)]
+        [Description("Bitmap 16 color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         Bitmap16Color,
-        [Description("Bitmap Grayscale"), Icon(InfIconType.def)]
+        [Description("Bitmap Grayscale"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapGrayscale,
-        [Description("Bitmap Paletted"), Icon(InfIconType.def)]
+        [Description("Bitmap Paletted"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapPaletted,
-        [Description("Bitmap RGB Color"), Icon(InfIconType.def)]
+        [Description("Bitmap RGB Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapRGBColor,
-        [Description("Bitmap CMYK Color"), Icon(InfIconType.def)]
+        [Description("Bitmap CMYK Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCMYKColor,
-        [Description("Bitmap Duotone"), Icon(InfIconType.def)]
+        [Description("Bitmap Duotone"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapDuotone,
-        [Description("Bitmap LAB Color"), Icon(InfIconType.def)]
+        [Description("Bitmap LAB Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapLABColor,
-        [Description("Bitmap CMYKMultiChannel"), Icon(InfIconType.def)]
+        [Description("Bitmap CMYKMultiChannel"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCMYKMultiChannel,
-        [Description("Bitmap RGBMultiChannel"), Icon(InfIconType.def)]
+        [Description("Bitmap RGBMultiChannel"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapRGBMultiChannel,
-        [Description("Bitmap SpotMultiChannel"), Icon(InfIconType.def)]
+        [Description("Bitmap SpotMultiChannel"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapSpotMultiChannel,
 
         //powerclip
@@ -224,6 +234,7 @@ namespace InfCDRScan.Services
                 {
                     Icon = GetIcon(item),
                     Description = GetDescription(item),
+                    GroupName = GetGroupName(item),
                     Shapes = new List<ShapeModel>()
                 };
                 filters.Add(item, newFilter);
@@ -269,6 +280,22 @@ namespace InfCDRScan.Services
                 return ((IconAttribute)attributes[0]).Value;
             else
                 return InfIconType.None;
+        }
+
+        /// <summary>
+        /// Возвращает значение атрибута FilterDescription из перечисления
+        /// </summary>
+        /// <param name="value">Элемент типа перечисления</param>
+        /// <returns></returns>
+        private string GetGroupName(Enum value)
+        {
+            Type type = value.GetType();
+            FieldInfo fieldInfo = type.GetField(value.ToString());
+            var attributes = fieldInfo.GetCustomAttributes(typeof(GroupNameAttribute), false);
+            if (attributes.Length > 0)
+                return ((GroupNameAttribute)attributes[0]).Value.ToString();
+            else
+                return InfFilterGroup.Common.ToString();
         }
 
         #endregion

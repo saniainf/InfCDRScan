@@ -10,6 +10,7 @@ namespace InfCDRScan.Models.Filters
     {
         public InfIconType Icon { get; set; }
         public string Description { get; set; }
+        public string GroupName { get; set; }
         public ICollection<ShapeModel> Shapes { get; set; }
         public string Count => Shapes.Count.ToString();
     }

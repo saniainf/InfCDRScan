@@ -16,6 +16,15 @@ namespace InfCDRScan.Services
         }
     }
 
+    internal class GroupNameAttribute : Attribute
+    {
+        public InfFilterGroup Value { get; private set; }
+        public GroupNameAttribute(InfFilterGroup value)
+        {
+            Value = value;
+        }
+    }
+
     internal class IconAttribute : Attribute
     {
         public InfIconType Value { get; private set; }

@@ -41,6 +41,15 @@
                  FontSize="12" 
                  ItemsSource="{Binding CollectionViewFilters}"
                  SelectedItem="{Binding SelectedFilter}">
+            <ListBox.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListBox.GroupStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel LastChildFill="True" Height="19">
