@@ -40,13 +40,20 @@
                  FontFamily="pack://application:,,,/InfCDRScan;component/Resources/Font/#PT Mono" 
                  FontSize="12" 
                  ItemsSource="{Binding CollectionViewFilters}"
-                 SelectedItem="{Binding SelectedFilter}">
+                 SelectedItem="{Binding SelectedFilter}"
+                 SnapsToDevicePixels="True">
             <ListBox.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="{StaticResource Button.Static.Border}" Margin="0,4,0,2" BorderThickness="0,0,0,1">
-                                <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="0,0,0,1" Foreground="{StaticResource DarkGrey.Default.Static.Background}"/>
+                            <Border BorderBrush="{StaticResource Button.Static.Border}" 
+                                    Margin="0,4,0,2" BorderThickness="0,0,0,1" 
+                                    SnapsToDevicePixels="True">
+                                <TextBlock Text="{Binding Path=Name}" 
+                                           FontWeight="Bold" 
+                                           Margin="0,0,0,1" 
+                                           Foreground="{StaticResource DarkGrey.Default.Static.Background}" 
+                                           SnapsToDevicePixels="True"/>
                             </Border>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
