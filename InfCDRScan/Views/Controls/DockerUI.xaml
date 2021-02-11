@@ -45,7 +45,9 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+                            <Border BorderBrush="{StaticResource Button.Static.Border}" Margin="0,4,0,2" BorderThickness="0,0,0,1">
+                                <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="0,0,0,1" Foreground="{StaticResource DarkGrey.Default.Static.Background}"/>
+                            </Border>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
