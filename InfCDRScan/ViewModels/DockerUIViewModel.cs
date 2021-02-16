@@ -110,7 +110,7 @@ namespace InfCDRScan.ViewModels
 
             stopwatch.Restart();
 
-            corelApp.BeginDraw();
+            corelApp.BeginDraw(commandGroup: false);
 
             FiltersManger filtersManger = new FiltersManger(corelApp.ActiveDocument.Index);
             CorelDrawHandler corelDrawHandler = new CorelDrawHandler(corelApp, filtersManger);
