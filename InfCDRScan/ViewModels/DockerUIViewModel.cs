@@ -122,6 +122,7 @@ namespace InfCDRScan.ViewModels
 
             filters = filtersManger.GetFilters();
             collectionViewFilters.Source = filters;
+
             collectionViewFilters.GroupDescriptions.Clear();
             collectionViewFilters.GroupDescriptions.Add(new PropertyGroupDescription(nameof(FilterModel.GroupName)));
             OnPropertyChanged(nameof(CollectionViewFilters));

@@ -66,7 +66,8 @@ namespace InfCDRScan.Services
                     ProcessingOnSelectionShape(shape);
                     break;
                 case corel.cdrShapeType.cdrGuidelineShape:
-                    ProcessingOnGuidelineShape(shape);
+                    //TODO пока отключу, невижу надобности
+                    //ProcessingOnGuidelineShape(shape);
                     break;
                 case corel.cdrShapeType.cdrOLEObjectShape:
                     ProcessingOnOLEObjectShape(shape);
@@ -164,6 +165,7 @@ namespace InfCDRScan.Services
         private void ProcessingOnGroupShape(corel.Shape shape) =>
             Scan(shape.Shapes.All(), pageID);
 
+        //done
         private void ProcessingOnPowerClipShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -188,11 +190,13 @@ namespace InfCDRScan.Services
             Scan(shape.PowerClip.Shapes.All(), pageID);
         }
 
+        //done
         private void ProcessingOnNoShape(corel.Shape shape)
         {
 
         }
 
+        //done
         private void ProcessingOnRectangleShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -207,6 +211,7 @@ namespace InfCDRScan.Services
             ScanOutline(shape.Outline, shapeID, shape.Type);
         }
 
+        //done
         private void ProcessingOnEllipseShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -221,6 +226,7 @@ namespace InfCDRScan.Services
             ScanOutline(shape.Outline, shapeID, shape.Type);
         }
 
+        //done
         private void ProcessingOnCurveShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -247,6 +253,7 @@ namespace InfCDRScan.Services
             ScanOutline(shape.Outline, shapeID, shape.Type);
         }
 
+        //done
         private void ProcessingOnPolygonShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -284,6 +291,7 @@ namespace InfCDRScan.Services
             ScanOutline(shape.Outline, shapeID, shape.Type);
         }
 
+        //done
         private void ProcessingOnBitmapShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -444,6 +452,7 @@ namespace InfCDRScan.Services
             }
         }
 
+        //done
         private void ProcessingOnTextShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -489,6 +498,9 @@ namespace InfCDRScan.Services
                     Icon = icon
                 });
             }
+
+            ScanFill(shape.Fill, shapeID, shape.Type);
+            ScanOutline(shape.Outline, shapeID, shape.Type);
         }
 
         private void ProcessingOnSelectionShape(corel.Shape shape)
@@ -508,6 +520,7 @@ namespace InfCDRScan.Services
             });
         }
 
+        //done
         private void ProcessingOnOLEObjectShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -519,6 +532,7 @@ namespace InfCDRScan.Services
             });
         }
 
+        //done
         private void ProcessingOnLinearDimensionShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -530,6 +544,7 @@ namespace InfCDRScan.Services
             });
         }
 
+        //done
         private void ProcessingOn3DObjectShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -541,6 +556,7 @@ namespace InfCDRScan.Services
             });
         }
 
+        //TODO цвет линии не работает
         private void ProcessingOnArtisticMediaGroupShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
@@ -719,9 +735,13 @@ namespace InfCDRScan.Services
                 Description = string.Format("{0} | Page: {1}", GetShapeTypeName(shape.Type), pageID),
                 Icon = InfIconType.def
             });
-            ProcessingColor(shape.Effect.Contour.FillColor, shapeID, InfIconType.def);
-            ProcessingColor(shape.Effect.Contour.FillColorTo, shapeID, InfIconType.def);
-            ProcessingColor(shape.Effect.Contour.OutlineColor, shapeID, InfIconType.def);
+            //if (shape.Effect != null)
+            //    if (shape.Effect.Contour != null)
+            //    {
+            //        ProcessingColor(shape.Effect.Contour.FillColor, shapeID, InfIconType.def);
+            //        ProcessingColor(shape.Effect.Contour.FillColorTo, shapeID, InfIconType.def);
+            //        ProcessingColor(shape.Effect.Contour.OutlineColor, shapeID, InfIconType.def);
+            //    }
         }
 
         private void ProcessingOnEffectDistortion(corel.Shape shape)

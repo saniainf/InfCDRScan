@@ -10,12 +10,30 @@ namespace InfCDRScan.Services
 {
     internal enum InfFilterGroup
     {
+        [Description("Common")]
         Common,
+        [Description("Simple Shape")]
         Shape,
+        [Description("Text")]
         Text,
+        [Description("Bitmap")]
         Bitmap,
+        [Description("PowerClip")]
         PowerClip,
-        Color
+        [Description("Color Palette")]
+        ColorType,
+        [Description("Prepress")]
+        Prepress,
+        [Description("Fill")]
+        Fill,
+        [Description("Outline")]
+        Outline,
+        [Description("Effect")]
+        Effect,
+        [Description("Special Shape")]
+        Special,
+        [Description("Services")]
+        Services,
     }
 
     internal enum InfFilters
@@ -32,27 +50,27 @@ namespace InfCDRScan.Services
         ShapeEllipse,
         [Description("Polygon"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
         ShapePolygon,
-        [Description("Shape Nodes > 3000"), Icon(InfIconType.def), GroupName(InfFilterGroup.Shape)]
+        [Description("Shape Nodes > 3000"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         ShapeNodesGreat,
 
         //текст
         [Description("Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
         TextCommon,
-        [Description("Overflow Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
+        [Description("Overflow Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         TextOverflow,
-        [Description("Different Text Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
+        [Description("Different Text Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         TextDifferentFill,
 
         //bitmaps
         [Description("Bitmap"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCommon,
-        [Description("Bitmap Res. > 320dpi"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Res. > 320dpi"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         BitmapDPIGreat,
-        [Description("Bitmap Unproportional"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Unproportional"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         BitmapUnproportional,
-        [Description("Bitmap Crop On"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Crop On"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         BitmapCropOn,
-        [Description("Bitmap Transparent"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Transparent"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         BitmapTransparent,
         [Description("Bitmap Black&White"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapBW,
@@ -78,125 +96,125 @@ namespace InfCDRScan.Services
         BitmapSpotMultiChannel,
 
         //powerclip
-        [Description("PowerClip"), Icon(InfIconType.def)]
+        [Description("PowerClip"), Icon(InfIconType.def), GroupName(InfFilterGroup.PowerClip)]
         PowerClip,
-        [Description("PowerClip with Fill"), Icon(InfIconType.def)]
+        [Description("PowerClip with Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         PowerClipWithFill,
 
         //простой цвет
-        [Description("Pantone Color"), Icon(InfIconType.def)]
+        [Description("Pantone Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorPantone,
-        [Description("CMYK Color"), Icon(InfIconType.CMYKColorModel)]
+        [Description("CMYK Color"), Icon(InfIconType.CMYKColorModel), GroupName(InfFilterGroup.ColorType)]
         ColorCMYK,
-        [Description("CMY Color"), Icon(InfIconType.def)]
+        [Description("CMY Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorCMY,
-        [Description("RGB Color"), Icon(InfIconType.RGBColorModel)]
+        [Description("RGB Color"), Icon(InfIconType.RGBColorModel), GroupName(InfFilterGroup.ColorType)]
         ColorRGB,
-        [Description("HSB Color"), Icon(InfIconType.def)]
+        [Description("HSB Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorHSB,
-        [Description("HLS Color"), Icon(InfIconType.def)]
+        [Description("HLS Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorHLS,
-        [Description("B&W Color"), Icon(InfIconType.def)]
+        [Description("B&W Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorBW,
-        [Description("Gray Color"), Icon(InfIconType.def)]
+        [Description("Gray Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorGray,
-        [Description("YIQ Color"), Icon(InfIconType.def)]
+        [Description("YIQ Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorYIQ,
-        [Description("Lab Color"), Icon(InfIconType.def)]
+        [Description("Lab Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorLab,
-        [Description("Pantone HEX Color"), Icon(InfIconType.def)]
+        [Description("Pantone HEX Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorPantoneHEX,
-        [Description("Registration Color"), Icon(InfIconType.def)]
+        [Description("Registration Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorReg,
-        [Description("User ink Color"), Icon(InfIconType.def)]
+        [Description("User ink Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorUserInk,
-        [Description("Spot Color"), Icon(InfIconType.def)]
+        [Description("Spot Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorSpot,
-        [Description("Multi-channel Color"), Icon(InfIconType.def)]
+        [Description("Multi-channel Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorMultiChannel,
-        [Description("Mixed Color"), Icon(InfIconType.def)]
+        [Description("Mixed Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorMixedColor,
 
         //фильтры для cmyk
-        [Description("Total ink > 300%"), Icon(InfIconType.def)]
+        [Description("Total ink > 300%"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYKTotalInkGreat,
-        [Description("CMYK 400"), Icon(InfIconType.def)]
+        [Description("CMYK 400"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYK400,
-        [Description("Color control (min 10)"), Icon(InfIconType.def)]
+        [Description("Color control (min 10)"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYKMin10,
 
         //заливки
-        [Description("Uniform Fill"), Icon(InfIconType.def)]
+        [Description("Uniform Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillUniform,
-        [Description("Fountain Fill"), Icon(InfIconType.def)]
+        [Description("Fountain Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillFountain,
-        [Description("Postscript Fill"), Icon(InfIconType.def)]
+        [Description("Postscript Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillPostscript,
-        [Description("Texture Fill"), Icon(InfIconType.def)]
+        [Description("Texture Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillTexture,
-        [Description("Pattern Fill"), Icon(InfIconType.def)]
+        [Description("Pattern Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillPattern,
-        [Description("Hatch Fill"), Icon(InfIconType.def)]
+        [Description("Hatch Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillHatch,
-        [Description("Mesh Fill"), Icon(InfIconType.def)]
+        [Description("Mesh Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillMesh,
 
         //обводки
-        [Description("Outline"), Icon(InfIconType.def)]
+        [Description("Outline"), Icon(InfIconType.def), GroupName(InfFilterGroup.Outline)]
         Outline,
-        [Description("Enhanced Outline"), Icon(InfIconType.def)]
+        [Description("Enhanced Outline"), Icon(InfIconType.def), GroupName(InfFilterGroup.Outline)]
         OutlineEnhanced,
 
         //эфекты шейпов
-        [Description("Blend"), Icon(InfIconType.def)]
+        [Description("Blend"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectBlend,
-        [Description("Extrude"), Icon(InfIconType.def)]
+        [Description("Extrude"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectExtrude,
-        [Description("Envelope"), Icon(InfIconType.def)]
+        [Description("Envelope"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectEnvelope,
-        [Description("TextOnPathEffect"), Icon(InfIconType.def)]
+        [Description("TextOnPathEffect"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectTextOnPath,
-        [Description("ControlPathEffect"), Icon(InfIconType.def)]
+        [Description("ControlPathEffect"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectControlPath,
-        [Description("DropShadow"), Icon(InfIconType.def)]
+        [Description("DropShadow"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectDropShadow,
-        [Description("Contour"), Icon(InfIconType.def)]
+        [Description("Contour"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectContour,
-        [Description("Distortion"), Icon(InfIconType.def)]
+        [Description("Distortion"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectDistortion,
-        [Description("Perspective"), Icon(InfIconType.def)]
+        [Description("Perspective"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectPerspective,
-        [Description("Lens"), Icon(InfIconType.def)]
+        [Description("Lens"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectLens,
-        [Description("Custom Effect"), Icon(InfIconType.def)]
+        [Description("Custom Effect"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectCustom,
-        [Description("Bevel"), Icon(InfIconType.def)]
+        [Description("Bevel"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
         EffectBevel,
 
         //разные шейпы
-        [Description("ArtisticMedia"), Icon(InfIconType.def)]
+        [Description("ArtisticMedia"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         EffectArtisticMedia,
-        [Description("3D Object"), Icon(InfIconType.def)]
+        [Description("3D Object"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         Effect3DObject,
-        [Description("HTML Form"), Icon(InfIconType.def)]
+        [Description("HTML Form"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ObjectHTMLForm,
-        [Description("EPS"), Icon(InfIconType.def)]
+        [Description("EPS"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ShapeEPS,
-        [Description("Custom Shape"), Icon(InfIconType.def)]
+        [Description("Custom Shape"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ShapeCustom,
-        [Description("Perfect Shape"), Icon(InfIconType.def)]
+        [Description("Perfect Shape"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ShapePerfect,
-        [Description("OLE Shape"), Icon(InfIconType.def)]
+        [Description("OLE Shape"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ShapeOLE,
-        [Description("Connector Shape"), Icon(InfIconType.def)]
+        [Description("Connector Shape"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ShapeConnector,
-        [Description("Symbol Shape"), Icon(InfIconType.def)]
+        [Description("Symbol Shape"), Icon(InfIconType.def), GroupName(InfFilterGroup.Special)]
         ShapeSymbol,
 
         //вспомогательные шейпы
-        [Description("Guidelines"), Icon(InfIconType.def)]
+        [Description("Guidelines"), Icon(InfIconType.def), GroupName(InfFilterGroup.Services)]
         ObjectGuidelines,
-        [Description("Linear Dimension"), Icon(InfIconType.def)]
+        [Description("Linear Dimension"), Icon(InfIconType.def), GroupName(InfFilterGroup.Services)]
         ObjectLinearDimension,
     }
 
@@ -262,8 +280,10 @@ namespace InfCDRScan.Services
             Type type = value.GetType();
             FieldInfo fieldInfo = type.GetField(value.ToString());
             var attributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            var attribute = (DescriptionAttribute)attributes[0];
-            return attribute.Value;
+            if (attributes.Length > 0)
+                return ((DescriptionAttribute)attributes[0]).Value;
+            else
+                return value.ToString();
         }
 
         /// <summary>
@@ -283,7 +303,7 @@ namespace InfCDRScan.Services
         }
 
         /// <summary>
-        /// Возвращает значение атрибута FilterDescription из перечисления
+        /// Возвращает значение атрибута GroupName из перечисления
         /// </summary>
         /// <param name="value">Элемент типа перечисления</param>
         /// <returns></returns>
@@ -293,9 +313,9 @@ namespace InfCDRScan.Services
             FieldInfo fieldInfo = type.GetField(value.ToString());
             var attributes = fieldInfo.GetCustomAttributes(typeof(GroupNameAttribute), false);
             if (attributes.Length > 0)
-                return ((GroupNameAttribute)attributes[0]).Value.ToString();
+                return GetDescription(((GroupNameAttribute)attributes[0]).Value);
             else
-                return InfFilterGroup.Common.ToString();
+                return GetDescription(InfFilterGroup.Common);
         }
 
         #endregion
