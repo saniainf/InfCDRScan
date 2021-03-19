@@ -310,6 +310,8 @@ namespace InfCDRScan.Services
                     commonDescription = "Black&White";
                     icon = InfIconType.def;
                     modeFilter = InfFilters.BitmapBW;
+                    ScanFill(shape.Fill, shapeID, cdrShapeType.cdrBitmapShape);
+                    ScanOutline(shape.Outline, shapeID, cdrShapeType.cdrBitmapShape);
                     break;
                 case cdrImageType.cdr16ColorsImage:
                     commonDescription = "16 Color";
