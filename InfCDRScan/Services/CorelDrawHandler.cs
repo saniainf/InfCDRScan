@@ -26,6 +26,8 @@ namespace InfCDRScan.Services
             this.pageID = pageID;
             foreach (corel.Shape shape in sr)
             {
+                PrecessingOnHiddenOrLockedObject(shape);
+
                 if (shape.Type == corel.cdrShapeType.cdrGroupShape)
                     ProcessingOnGroupShape(shape);
 
@@ -156,6 +158,32 @@ namespace InfCDRScan.Services
                         break;
                 }
             }
+        }
+
+        #endregion
+
+        #region обработка базовых свойств
+
+        private void PrecessingOnHiddenOrLockedObject(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            corel.cdrShapeType type = shape.Type;
+            
+            if (!shape.Visible)
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectHide,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
+            if (shape.Locked)
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectLock,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
         }
 
         #endregion

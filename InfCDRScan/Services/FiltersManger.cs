@@ -135,13 +135,17 @@ namespace InfCDRScan.Services
         [Description("Mixed Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorMixedColor,
 
-        //фильтры для cmyk
+        //препресс
         [Description("Total ink > 300%"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYKTotalInkGreat,
         [Description("CMYK 400"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYK400,
         [Description("Color control (min 10)"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYKMin10,
+        [Description("Hidden object"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        ObjectHide,
+        [Description("Locked object"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        ObjectLock,
 
         //заливки
         [Description("Uniform Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
