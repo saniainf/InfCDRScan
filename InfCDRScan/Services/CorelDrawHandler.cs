@@ -190,8 +190,21 @@ namespace InfCDRScan.Services
 
         #region обработка shape типа
 
-        private void ProcessingOnGroupShape(corel.Shape shape) =>
+        private void ProcessingOnGroupShape(corel.Shape shape)
+        {
+            int shapeID = shape.StaticID;
+            corel.cdrShapeType type = shape.Type;
+
+            if (shape.Shapes.Count == 1)
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectGroupOne,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
             Scan(shape.Shapes.All(), pageID);
+        }
 
         //done
         private void ProcessingOnPowerClipShape(corel.Shape shape)

@@ -146,6 +146,8 @@ namespace InfCDRScan.Services
         ObjectHide,
         [Description("Locked object"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         ObjectLock,
+        [Description("Group of 1"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        ObjectGroupOne,
 
         //заливки
         [Description("Uniform Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
