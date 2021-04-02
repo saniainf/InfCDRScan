@@ -26,7 +26,7 @@ namespace InfCDRScan.Services
             this.pageID = pageID;
             foreach (corel.Shape shape in sr)
             {
-                PrecessingOnHiddenOrLockedObject(shape);
+                PrecessingOnShapeProperty(shape);
 
                 if (shape.Type == corel.cdrShapeType.cdrGroupShape)
                     ProcessingOnGroupShape(shape);
@@ -162,13 +162,13 @@ namespace InfCDRScan.Services
 
         #endregion
 
-        #region обработка базовых свойств
+        #region обработка свойств самого shape объекта
 
-        private void PrecessingOnHiddenOrLockedObject(corel.Shape shape)
+        private void PrecessingOnShapeProperty(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
             corel.cdrShapeType type = shape.Type;
-            
+
             if (!shape.Visible)
                 filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
                 {
@@ -181,6 +181,46 @@ namespace InfCDRScan.Services
                 filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
                 {
                     FiltersType = InfFilters.ObjectLock,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
+            if (shape.OverprintBitmap)
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.BitmapOverprint,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
+            if (shape.OverprintFill)
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectOverprintFill,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
+            if (shape.OverprintOutline)
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectOverprintOutline,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
+            if (shape.Fill.Type == cdrFillType.cdrUniformFill && IsWhiteColor(shape.Fill.UniformColor))
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectOverprintWhite,
+                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                    Icon = InfIconType.def
+                });
+
+            if (shape.Outline.Type == cdrOutlineType.cdrOutline && IsWhiteColor(shape.Outline.Color))
+                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                {
+                    FiltersType = InfFilters.ObjectOverprintWhite,
                     Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
                     Icon = InfIconType.def
                 });
@@ -1287,6 +1327,32 @@ namespace InfCDRScan.Services
         }
 
         #endregion
+
+        private bool IsWhiteColor(corel.Color color)
+        {
+            switch (color.Type)
+            {
+                case cdrColorType.cdrColorCMYK:
+                    if (color.CMYKCyan + color.CMYKMagenta + color.CMYKYellow + color.CMYKBlack < 15)
+                        return true;
+                    break;
+                case cdrColorType.cdrColorCMY:
+                    if (color.CMYCyan + color.CMYMagenta + color.CMYYellow < 15)
+                        return true;
+                    break;
+                case cdrColorType.cdrColorRGB:
+                    if (color.RGBRed + color.RGBGreen + color.RGBBlue > 755)
+                        return true;
+                    break;
+                case cdrColorType.cdrColorGray:
+                    if (color.Gray > 245)
+                        return true;
+                    break;
+                default:
+                    return false;
+            }
+            return false;
+        }
 
         #endregion
     }

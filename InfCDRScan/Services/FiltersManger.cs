@@ -56,7 +56,7 @@ namespace InfCDRScan.Services
         //текст
         [Description("Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Text)]
         TextCommon,
-        [Description("Overflow Text"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        [Description("Text Overflow"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         TextOverflow,
         [Description("Different Text Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         TextDifferentFill,
@@ -64,29 +64,21 @@ namespace InfCDRScan.Services
         //bitmaps
         [Description("Bitmap"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCommon,
-        [Description("Bitmap Res. > 320dpi"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
-        BitmapDPIGreat,
-        [Description("Bitmap Unproportional"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
-        BitmapUnproportional,
-        [Description("Bitmap Crop On"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
-        BitmapCropOn,
-        [Description("Bitmap Transparent"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
-        BitmapTransparent,
         [Description("Bitmap Black&White"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapBW,
-        [Description("Bitmap 16 color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Color 16"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         Bitmap16Color,
         [Description("Bitmap Grayscale"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapGrayscale,
         [Description("Bitmap Paletted"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapPaletted,
-        [Description("Bitmap RGB Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Color RGB"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapRGBColor,
-        [Description("Bitmap CMYK Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Color CMYK"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCMYKColor,
         [Description("Bitmap Duotone"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapDuotone,
-        [Description("Bitmap LAB Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
+        [Description("Bitmap Color LAB"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapLABColor,
         [Description("Bitmap CMYKMultiChannel"), Icon(InfIconType.def), GroupName(InfFilterGroup.Bitmap)]
         BitmapCMYKMultiChannel,
@@ -102,74 +94,90 @@ namespace InfCDRScan.Services
         PowerClipWithFill,
 
         //простой цвет
-        [Description("Pantone Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Pantone"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorPantone,
-        [Description("CMYK Color"), Icon(InfIconType.CMYKColorModel), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color CMYK"), Icon(InfIconType.CMYKColorModel), GroupName(InfFilterGroup.ColorType)]
         ColorCMYK,
-        [Description("CMY Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color CMY"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorCMY,
-        [Description("RGB Color"), Icon(InfIconType.RGBColorModel), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color RGB"), Icon(InfIconType.RGBColorModel), GroupName(InfFilterGroup.ColorType)]
         ColorRGB,
-        [Description("HSB Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color HSB"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorHSB,
-        [Description("HLS Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color HLS"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorHLS,
-        [Description("B&W Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color B&W"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorBW,
-        [Description("Gray Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Gray"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorGray,
-        [Description("YIQ Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color YIQ"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorYIQ,
-        [Description("Lab Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Lab"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorLab,
-        [Description("Pantone HEX Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Pantone HEX"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorPantoneHEX,
-        [Description("Registration Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Registration"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorReg,
-        [Description("User ink Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color User ink"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorUserInk,
-        [Description("Spot Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Spot"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorSpot,
-        [Description("Multi-channel Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Multi-channel"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorMultiChannel,
-        [Description("Mixed Color"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
+        [Description("Color Mixed"), Icon(InfIconType.def), GroupName(InfFilterGroup.ColorType)]
         ColorMixedColor,
 
         //препресс
+        [Description("Bitmap Res. > 320dpi"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        BitmapDPIGreat,
+        [Description("Bitmap Unproportional"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        BitmapUnproportional,
+        [Description("Bitmap Crop On"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        BitmapCropOn,
+        [Description("Bitmap Transparent"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        BitmapTransparent,
+        [Description("Bitmap Overprint"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        BitmapOverprint,
         [Description("Total ink > 300%"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYKTotalInkGreat,
         [Description("CMYK 400"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYK400,
         [Description("Color control (min 10)"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         CMYKMin10,
-        [Description("Hidden object"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        [Description("Color White Overprint"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        ObjectOverprintWhite,
+        [Description("Object Hidden"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         ObjectHide,
-        [Description("Locked object"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        [Description("Object Locked"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         ObjectLock,
         [Description("Group of 1"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
         ObjectGroupOne,
 
         //заливки
-        [Description("Uniform Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Uniform"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillUniform,
-        [Description("Fountain Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Fountain"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillFountain,
-        [Description("Postscript Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Postscript"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillPostscript,
-        [Description("Texture Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Texture"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillTexture,
-        [Description("Pattern Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Pattern"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillPattern,
-        [Description("Hatch Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Hatch"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillHatch,
-        [Description("Mesh Fill"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
+        [Description("Fill Mesh"), Icon(InfIconType.def), GroupName(InfFilterGroup.Fill)]
         FillMesh,
+        [Description("Fill Overprint"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        ObjectOverprintFill,
 
         //обводки
         [Description("Outline"), Icon(InfIconType.def), GroupName(InfFilterGroup.Outline)]
         Outline,
-        [Description("Enhanced Outline"), Icon(InfIconType.def), GroupName(InfFilterGroup.Outline)]
+        [Description("Outline Enhanced"), Icon(InfIconType.def), GroupName(InfFilterGroup.Outline)]
         OutlineEnhanced,
+        [Description("Outline Overprint"), Icon(InfIconType.def), GroupName(InfFilterGroup.Prepress)]
+        ObjectOverprintOutline,
 
         //эфекты шейпов
         [Description("Blend"), Icon(InfIconType.def), GroupName(InfFilterGroup.Effect)]
