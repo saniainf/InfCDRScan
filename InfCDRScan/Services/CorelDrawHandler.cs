@@ -194,6 +194,7 @@ namespace InfCDRScan.Services
                 });
 
             if (shape.OverprintFill)
+            {
                 filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
                 {
                     FiltersType = InfFilters.ObjectOverprintFill,
@@ -201,7 +202,17 @@ namespace InfCDRScan.Services
                     Icon = InfIconType.def
                 });
 
+                if (shape.Fill.Type == cdrFillType.cdrUniformFill && IsWhiteColor(shape.Fill.UniformColor))
+                    filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                    {
+                        FiltersType = InfFilters.ObjectOverprintWhite,
+                        Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                        Icon = InfIconType.def
+                    });
+            }
+
             if (shape.OverprintOutline)
+            {
                 filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
                 {
                     FiltersType = InfFilters.ObjectOverprintOutline,
@@ -209,21 +220,14 @@ namespace InfCDRScan.Services
                     Icon = InfIconType.def
                 });
 
-            if (shape.Fill.Type == cdrFillType.cdrUniformFill && IsWhiteColor(shape.Fill.UniformColor))
-                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
-                {
-                    FiltersType = InfFilters.ObjectOverprintWhite,
-                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
-                    Icon = InfIconType.def
-                });
-
-            if (shape.Outline.Type == cdrOutlineType.cdrOutline && IsWhiteColor(shape.Outline.Color))
-                filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
-                {
-                    FiltersType = InfFilters.ObjectOverprintWhite,
-                    Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
-                    Icon = InfIconType.def
-                });
+                if (shape.Outline.Type == cdrOutlineType.cdrOutline && IsWhiteColor(shape.Outline.Color))
+                    filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
+                    {
+                        FiltersType = InfFilters.ObjectOverprintWhite,
+                        Description = string.Format("{0} | Page: {1}", GetShapeTypeName(type), pageID),
+                        Icon = InfIconType.def
+                    });
+            }
         }
 
         #endregion
