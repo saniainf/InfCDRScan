@@ -315,7 +315,9 @@ namespace InfCDRScan.Services
         private void ProcessingOnCurveShape(corel.Shape shape)
         {
             int shapeID = shape.StaticID;
-            int nodeCount = shape.Curve.Nodes.Count;
+            int nodeCount;
+            try { nodeCount = shape.Curve.Nodes.Count; }
+            catch (Exception) { nodeCount = int.MaxValue; }
 
             filtersManger.AddShape(new ShapeDataSheet(shapeID, pageID)
             {
